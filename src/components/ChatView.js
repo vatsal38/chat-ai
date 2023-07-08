@@ -5,7 +5,6 @@ import Thinking from "./Thinking";
 import { MdSend } from "react-icons/md";
 import Filter from "bad-words";
 import { davinci } from "../utils/davinci";
-import { dalle } from "../utils/dalle";
 import Modal from "./Modal";
 import Setting from "./Setting";
 
@@ -17,7 +16,6 @@ const ChatView = () => {
   const inputRef = useRef();
   const [formValue, setFormValue] = useState("");
   const [thinking, setThinking] = useState(false);
-  const options = ["MYAI"];
   // const [selected, setSelected] = useState(options[0]);
   const [messages, addMessage] = useContext(ChatContext);
   const [modalOpen, setModalOpen] = useState(false);
