@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import ReactGA from "react-ga4";
-import Admin from "./components/Admin";
 
 ReactGA.initialize(`${process.env.REACT_APP_GOOGLE_ANALYTICS_KEY}`);
 
