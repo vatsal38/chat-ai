@@ -3,16 +3,17 @@ import {
   MdClose,
   MdMenu,
   MdAdd,
-  MdOutlineCoffee,
   MdOutlineVpnKey,
+  MdAdminPanelSettings,
 } from "react-icons/md";
-import { AiOutlineGithub } from "react-icons/ai";
+
 import { ChatContext } from "../context/chatContext";
-import bot from "../assets/bot.ico";
 import DarkMode from "./DarkMode";
 import Modal from "./Modal";
 import Setting from "./Setting";
 import { GiArtificialHive } from "react-icons/gi";
+import Admin from "./Admin";
+import { Link } from "react-router-dom";
 
 /**
  * A sidebar component that displays a list of nav items and a toggle
@@ -22,7 +23,7 @@ import { GiArtificialHive } from "react-icons/gi";
  */
 const SideBar = () => {
   const [open, setOpen] = useState(true);
-  const [, , clearMessages] = useContext(ChatContext);
+  const [clearMessages] = useContext(ChatContext);
   const [modalOpen, setModalOpen] = useState(false);
 
   function handleResize() {
@@ -38,7 +39,11 @@ const SideBar = () => {
   return (
     <section className={` ${open ? "w-64" : "w-16"} sidebar`}>
       <div className="sidebar__app-bar flex justify-between">
-        <div className={`sidebar__app-logo ${!open && "scale-0 hidden"} flex gap-2`}>
+        <div
+          className={`sidebar__app-logo ${
+            !open && "scale-0 hidden"
+          } flex gap-2`}
+        >
           <GiArtificialHive style={{ fontSize: 30 }} />
           <h1 className={`sidebar__app-title ${!open && "scale-0 hidden"}`}>
             My AI
@@ -66,6 +71,16 @@ const SideBar = () => {
       </div>
 
       <div className="nav__bottom">
+        <div onClick={() => <Admin />} className="nav">
+          <span htmlFor="setting-modal" className="nav__item">
+            <div className="nav__icons ">
+              <MdAdminPanelSettings />
+            </div>
+            <h1>
+              <Link to="/admin">Admin</Link>
+            </h1>
+          </span>
+        </div>
         <DarkMode open={open} />
         <div onClick={() => setModalOpen(true)} className="nav">
           <span htmlFor="setting-modal" className="nav__item">
