@@ -24,7 +24,7 @@ import { Link } from "react-router-dom";
 const SideBar = () => {
   const [open, setOpen] = useState(true);
   const [clearMessages] = useContext(ChatContext);
-  const [modalOpen, setModalOpen] = useState(false);
+  // const [modalOpen, setModalOpen] = useState(false);
 
   function handleResize() {
     window.innerWidth <= 720 ? setOpen(false) : setOpen(true);
@@ -71,7 +71,7 @@ const SideBar = () => {
       </div>
 
       <div className="nav__bottom">
-        <div onClick={() => <Admin />} className="nav">
+        <div className="nav">
           <span htmlFor="setting-modal" className="nav__item">
             <div className="nav__icons ">
               <MdAdminPanelSettings />
@@ -82,7 +82,7 @@ const SideBar = () => {
           </span>
         </div>
         <DarkMode open={open} />
-        <div onClick={() => setModalOpen(true)} className="nav">
+        <div className="nav">
           <span htmlFor="setting-modal" className="nav__item">
             <div className="nav__icons">
               <MdOutlineVpnKey />
@@ -91,9 +91,9 @@ const SideBar = () => {
           </span>
         </div>
       </div>
-      <Modal title="Setting" modalOpen={modalOpen} setModalOpen={setModalOpen}>
+      {/* <Modal title="Setting" modalOpen={modalOpen} setModalOpen={setModalOpen}>
         <Setting modalOpen={modalOpen} setModalOpen={setModalOpen} />
-      </Modal>
+      </Modal> */}
     </section>
   );
 };

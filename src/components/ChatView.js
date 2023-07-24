@@ -18,7 +18,7 @@ const ChatView = () => {
   const [thinking, setThinking] = useState(false);
   // const [selected, setSelected] = useState(options[0]);
   const [messages, addMessage] = useContext(ChatContext);
-  const [modalOpen, setModalOpen] = useState(false);
+  // const [modalOpen, setModalOpen] = useState(false);
 
   /**
    * Scrolls the chat area to the bottom.
@@ -26,6 +26,8 @@ const ChatView = () => {
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
+
+  console.log("formValue", formValue);
 
   /**
    * Adds a new message to the chat.
@@ -54,11 +56,11 @@ const ChatView = () => {
   const sendMessage = async (e) => {
     e.preventDefault();
 
-    const key = window.localStorage.getItem("api-key");
-    if (!key) {
-      setModalOpen(true);
-      return;
-    }
+    // const key = window.localStorage.getItem("api-key");
+    // if (!key) {
+    //   setModalOpen(true);
+    //   return;
+    // }
 
     const filter = new Filter();
     const cleanPrompt = filter.isProfane(formValue)
@@ -73,7 +75,7 @@ const ChatView = () => {
     updateMessage(newMsg, false);
 
     try {
-      const response = await davinci(cleanPrompt, key);
+      const response = await davinci(cleanPrompt, "key");
       const data = response.data.choices[0].message.content;
       data && updateMessage(data, true);
     } catch (err) {
@@ -140,9 +142,9 @@ const ChatView = () => {
           </button>
         </div>
       </form>
-      <Modal title="Setting" modalOpen={modalOpen} setModalOpen={setModalOpen}>
+      {/* <Modal title="Setting" modalOpen={modalOpen} setModalOpen={setModalOpen}>
         <Setting modalOpen={modalOpen} setModalOpen={setModalOpen} />
-      </Modal>
+      </Modal> */}
     </div>
   );
 };

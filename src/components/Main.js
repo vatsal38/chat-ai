@@ -4,14 +4,14 @@ import { useEffect, useState } from "react";
 import { ChatContextProvider } from "../context/chatContext";
 
 const Main = () => {
-  const [modalOpen, setModalOpen] = useState(false);
+  // const [modalOpen, setModalOpen] = useState(false);
 
-  useEffect(() => {
-    const apiKey = window.localStorage.getItem("api-key");
-    if (!apiKey) {
-      setModalOpen(true);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const apiKey = window.localStorage.getItem("api-key");
+  //   if (!apiKey) {
+  //     setModalOpen(true);
+  //   }
+  // }, []);
   return (
     <ChatContextProvider>
       <div className="flex transition duration-500 ease-in-out">
